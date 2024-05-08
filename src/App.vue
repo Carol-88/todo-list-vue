@@ -1,32 +1,46 @@
 <template>
   <section>
-    <router-view class="app-main" /> <!-- your routes will load inside of these tags -->
+    <router-view class="app-main" />
+    <!-- your routes will load inside of these tags -->
   </section>
 </template>
- 
+
 <script setup>
-import { onMounted } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useRouter } from 'vue-router'
-import { useUserStore } from './stores/user.js'
- 
-const router = useRouter()
-const userStore = useUserStore()
-const { user } = storeToRefs(userStore)
- 
+import { onMounted } from "vue";
+import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
+import { useUserStore } from "./stores/user.js";
+
+const router = useRouter();
+const userStore = useUserStore();
+const { user } = storeToRefs(userStore);
+
 onMounted(async () => {
   try {
-    await userStore.fetchUser() // here we call fetch user
+    await userStore.fetchUser(); // here we call fetch user
     console.log(user.value);
     if (!user.value.data.user) {
       // redirect them to logout if the user is not there
-      router.push({ path: '/auth' });
+      router.push({ path: "/auth" });
     } else {
       // continue to dashboard
-      router.push({ path: '/' });
+      router.push({ path: "/" });
     }
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
-})
+});
 </script>
+
+<style>
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: #4d1818;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: auto;
+}
+</style>
