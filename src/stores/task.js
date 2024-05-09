@@ -4,19 +4,20 @@ import { supabase } from "../supabase";
 export const useTaskStore = defineStore({
   id: 'tasks',
   state: () => ({
-    tasks: null,
+    tasks: [],
   }),
   actions: {
     async fetchTasks() {
-      try {
-        const tasks = await supabase
-         .from("tasks")
-         .select("*")
-         .order("id", { ascending: false });
-        this.tasks = tasks;
-      } catch (error) {
-        console.error("Error fetching tasks:", error);
-      }
+ try {
+    const { data, error } = await supabase
+     .from("tasks")
+     .select("*")
+     .order("id", { ascending: false });
+    if (error) throw error;
+    this.tasks = data; // Asegúrate de que esto actualiza el estado correctamente
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+  }
     },
     async addTask(newTaskTitle, description, user_id) {
       try {
