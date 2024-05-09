@@ -10,6 +10,7 @@ import { onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 import { useUserStore } from "./stores/user.js";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 const router = useRouter();
 const userStore = useUserStore();
