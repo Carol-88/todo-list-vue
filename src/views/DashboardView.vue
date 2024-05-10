@@ -78,7 +78,7 @@ const addTask = async () => {
 };
 
 const editTask = (taskId) => {
-  taskIdToEdit.value = String(taskId);
+  taskIdToEdit.value = taskId;
 };
 
 const deleteTask = (taskId) => {
@@ -89,12 +89,13 @@ const markTaskAsComplete = (taskId) => {
   taskStore.markTaskAsComplete(taskId);
 };
 
-const handleUpdateTask = (updatedTask) => {
-  taskStore.editTask(
+const handleUpdateTask = async (updatedTask) => {
+  await taskStore.editTask(
     updatedTask.taskId,
     updatedTask.newTitle,
     updatedTask.newDescription
   );
+  await taskStore.fetchTasks();
 };
 
 const handleCloseModal = () => {

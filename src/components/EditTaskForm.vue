@@ -17,19 +17,17 @@ import { ref } from "vue";
 
 // Define las props que el componente espera recibir
 const props = defineProps({
-  taskId: String, // Asegúrate de que taskId sea de tipo String
+  taskId: Number, // Asegúrate de que taskId sea de tipo String
+  taskTitle: String,
+  taskDescription: String,
 });
 
 // Define los eventos que el componente puede emitir
 const emit = defineEmits(["update-task", "close"]);
 
 // Inicializa los datos del formulario con los valores actuales de la tarea
-const editedTitle = ref(props.taskId ? props.taskId.title : "");
-const editedDescription = ref(props.taskId ? props.taskId.description : "");
-
-if (!props.taskId) {
-  console.error("No se proporcionó un taskId válido.");
-}
+const editedTitle = ref(props.taskTitle);
+const editedDescription = ref(props.taskDescription);
 
 const submitForm = async () => {
   emit("update-task", {
@@ -39,12 +37,7 @@ const submitForm = async () => {
   });
 
   // Llama a la función editTask del store con los nuevos datos
-  emit("update-task", {
-    taskId: props.taskId,
-    newTitle: editedTitle.value,
-    newDescription: editedDescription.value,
-  });
-
+  // Asegúrate de que el componente padre maneje correctamente esta emisión
   emit("close");
 };
 </script>

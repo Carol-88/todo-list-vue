@@ -29,6 +29,7 @@ export const useTaskStore = defineStore({
         });
 
         if (error) throw error;
+        console.log(data);
         if (data) this.tasks = [...this.tasks, ...data];
 
         this.fetchTasks();
@@ -39,22 +40,13 @@ export const useTaskStore = defineStore({
 
     async editTask(taskId, newTitle, newDescription) {
       try {
-        const { error } = await supabase
+        const { data, error } = await supabase
           .from("tasks")
           .update({
             title: newTitle,
             description: newDescription,
           })
           .match({ id: taskId });
-        if (error) throw error;
-
-        const taskIndex = this.tasks.findIndex((task) => task.id === taskId);
-        if (taskIndex !== -1) {
-          this.tasks[taskIndex].title = newTitle;
-          this.tasks[taskIndex].description = newDescription;
-        }
-
-        this.fetchTasks();
       } catch (error) {
         console.error("Error editing task:", error);
       }
