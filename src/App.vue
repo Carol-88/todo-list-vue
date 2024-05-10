@@ -41,6 +41,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: auto;
+  width: 100vw;
 }
 </style>
