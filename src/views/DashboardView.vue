@@ -198,10 +198,11 @@ li {
   margin: 8px;
 }
 
-.task-content {
+/* Ajustes para mantener el título y el timestamp fijos */
+.task-card.task-content {
   margin-bottom: 16px;
-  max-height: 100px;
-  overflow: auto;
+  max-height: 100px; /* Ajusta según sea necesario */
+  overflow: auto; /* Permite el scroll si el texto de la descripción excede el espacio disponible */
 }
 
 .task-actions {

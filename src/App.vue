@@ -36,7 +36,7 @@ html {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
+
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;

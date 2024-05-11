@@ -1,10 +1,18 @@
 <template>
   <div class="container">
-    <button>Perfil</button>
+    <button @click="goToProfile">Perfil</button>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const goToProfile = () => {
+  router.push({ path: "/profile" });
+};
+</script>
 
 <style scoped>
 .container {
