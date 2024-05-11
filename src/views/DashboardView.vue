@@ -1,17 +1,25 @@
 <template>
   <section>
     <h1>Dashboard</h1>
-    <LogoutComponent />
+    <nav>
+      <LogoutComponent />
+    </nav>
     <div v-if="userStore.user">
-      <div class="task-inputs">
-        <input v-model="newTaskTitle" type="text" placeholder="Nueva tarea" />
+      <form class="task-inputs">
+        <input
+          v-model="newTaskTitle"
+          type="text"
+          placeholder="Nueva tarea"
+          required
+        />
         <input
           v-model="description"
           type="text"
           placeholder="Describe tu tarea"
+          required
         />
         <button @click="addTask">Agregar tarea</button>
-      </div>
+      </form>
     </div>
     <div v-else>
       <p>Por favor, inicia sesión para agregar tareas.</p>
@@ -114,18 +122,43 @@ onMounted(async () => {
 
 <style scoped>
 section {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+h1 {
+  font-size: xx-large;
+  text-align: center;
+  font-family: Arial Black;
+  font-weight: bold;
+  font-size: 30px;
+  color: #fff;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
 .task-inputs {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 16px;
+  width: 100%;
+}
+
+.task-inputs input {
+  flex-grow: 1;
+  margin-right: 8px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .task-list {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  gap: 2rem;
 }
 
 .task-card {
@@ -133,12 +166,15 @@ section {
   padding: 16px;
   margin-bottom: 16px;
   background-color: #f6ecec;
-  width: 300px;
+  width: calc(33.33% - 16px);
+  max-width: 100%;
   margin: 8px;
 }
 
 .task-content {
   margin-bottom: 16px;
+  max-height: 100px;
+  overflow: auto;
 }
 
 .task-actions {
@@ -153,15 +189,16 @@ section {
 }
 
 .task-actions i:hover {
-  color: #0056b3;
+  color: #660606;
 }
 
 .task-title-completed {
   text-decoration: line-through;
-  color: #660606; /* Opcional: cambia el color del texto a un gris para indicar que está completado */
+  color: #660606;
 }
+
 .task-description-completed {
   text-decoration: line-through;
-  color: #660606; /* Opcional: cambia el color del texto a un gris para indicar que está completado */
+  color: #660606;
 }
 </style>

@@ -25,7 +25,8 @@ const handleLogout = async () => {
 
 <style scoped>
 .logout-container {
-  text-align: center;
-  margin-top: 20px;
+  position: absolute;
+  top: 10px; /* Ajusta según sea necesario */
+  right: 10px; /* Ajusta según sea necesario */
 }
 </style>

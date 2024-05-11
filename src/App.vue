@@ -1,8 +1,6 @@
 <template>
-  <section>
-    <router-view class="app-main" />
-    <!-- your routes will load inside of these tags -->
-  </section>
+  <router-view class="app-main" />
+  <!-- your routes will load inside of these tags -->
 </template>
 
 <script setup>
@@ -33,14 +31,31 @@ onMounted(async () => {
 </script>
 
 <style>
-body {
+html {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background-color: #4d1818;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
+  box-sizing: border-box;
+  background-color: #4d1818;
+  margin: auto; /* Asegura que el padding y el margin no hagan que el contenido se salga del viewport */
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ba5858;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #731f1f;
 }
 </style>
