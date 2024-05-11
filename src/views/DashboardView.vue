@@ -26,8 +26,12 @@
               <i class="fas fa-trash" @click="deleteTask(task.id)"></i>
               <i class="fas fa-check" @click="markTaskAsComplete(task.id)"></i>
             </div>
-            <h3>{{ task.title }}</h3>
-            <p>{{ task.description }}</p>
+            <h3 :class="{ 'task-title-completed': task.is_complete }">
+              {{ task.title }}
+            </h3>
+            <p :class="{ 'task-description-completed': task.is_complete }">
+              {{ task.description }}
+            </p>
           </div>
         </li>
       </ul>
@@ -150,5 +154,14 @@ section {
 
 .task-actions i:hover {
   color: #0056b3;
+}
+
+.task-title-completed {
+  text-decoration: line-through;
+  color: #660606; /* Opcional: cambia el color del texto a un gris para indicar que está completado */
+}
+.task-description-completed {
+  text-decoration: line-through;
+  color: #660606; /* Opcional: cambia el color del texto a un gris para indicar que está completado */
 }
 </style>
