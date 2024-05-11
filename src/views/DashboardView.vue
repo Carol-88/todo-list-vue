@@ -2,7 +2,10 @@
   <section>
     <h1>Dashboard</h1>
     <nav>
-      <LogoutComponent />
+      <ul>
+        <li><ProfileButtonComponent /></li>
+        <li><LogoutComponent /></li>
+      </ul>
     </nav>
     <div v-if="userStore.user">
       <form class="task-inputs">
@@ -59,6 +62,7 @@ import { ref, onMounted } from "vue";
 import { useTaskStore } from "@/stores/task";
 import { useUserStore } from "@/stores/user";
 import EditTaskForm from "@/components/EditTaskForm.vue";
+import ProfileButtonComponent from "@/components/ProfileButtonComponent.vue";
 
 const taskStore = useTaskStore();
 const userStore = useUserStore();
@@ -125,6 +129,8 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 5rem;
+  height: 100vh;
 }
 
 h1 {
@@ -135,6 +141,14 @@ h1 {
   font-size: 30px;
   color: #fff;
   text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+}
+li {
+  list-style: none;
 }
 
 .task-inputs {
