@@ -12,8 +12,8 @@
   <div class="user-card" v-if="user">
     <img :src="user.avatar_url" alt="Avatar" />
     <div class="userinfo">
-      <p>username {{ user.username }}</p>
-      <em>name{{ user.full_name }}</em>
+      <p>{{ user.full_name }}</p>
+      <em>{{ user.username }}</em>
     </div>
   </div>
 </template>
@@ -46,7 +46,12 @@ const updateProfile = async () => {
 };
 
 onMounted(async () => {
-  await userStore.fetchUser();
+  try {
+    await userStore.fetchProfile();
+    user.value = userStore.user;
+  } catch (error) {
+    console.error("Error al cargar el perfil del usuario:", error);
+  }
 });
 </script>
 
