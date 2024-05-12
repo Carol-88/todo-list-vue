@@ -1,46 +1,66 @@
 <template>
-  <div>
-    <h2>Indica tu nombre completo</h2>
-    <input v-model="newFullName" placeholder="Nombre completo" />
-    <h2>Sube tu avatar</h2>
-    <input type="text" @change="handleAvatarUpload" />
-    <button @click="updateUser">Actualizar</button>
-
-    <!-- Tarjeta para mostrar los datos actualizados -->
-    <div class="user-card" v-if="user">
-      <img :src="user.avatar_url" alt="Avatar" />
-      <h3>{{ user.full_name }}</h3>
-      <p>Última actualización: {{ user.updated_at }}</p>
-    </div>
+  <div class="container">
+    <h2>Perfil</h2>
+    <form @submit.prevent="updateProfile">
+      <input v-model="full_name" placeholder="Nombre completo" />
+      <input v-model="avatar_url" placeholder="URL del avatar" />
+      <input v-model="username" placeholder="Nombre de usuario" />
+      <button type="submit">Actualizar perfil</button>
+    </form>
+  </div>
+  <div class="user-card container" v-if="user">
+    <img :src="user.avatar_url" alt="Avatar" />
+    <h3>{{ user.username }}</h3>
+    <h4>{{ user.full_name }}</h4>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useUserStore } from "../stores/user";
 
 const userStore = useUserStore();
-const newFullName = ref("");
-const newAvatarUrl = ref("");
+const user = ref(userStore.user);
+const full_name = ref("");
+const avatar_url = ref("");
+const username = ref("");
 
-const updateUser = async () => {
+const updateProfile = async () => {
   try {
-    await userStore.updateUser(newFullName.value, newAvatarUrl.value);
-    // Actualiza el estado del usuario en el store
-    userStore.fetchUser();
+    await userStore.updateProfile(
+      full_name.value,
+      avatar_url.value,
+      username.value
+    );
+
+    full_name.value = "";
+    avatar_url.value = "";
+    username.value = "";
   } catch (error) {
-    console.error("Error al actualizar el usuario:", error.message);
+    console.error("Error al actualizar el perfil:", error.message);
   }
 };
+
+onMounted(async () => {
+  await userStore.fetchUser();
+});
 </script>
 
 <style scoped>
 .user-card {
+  display: flex;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 16px;
   margin-top: 16px;
   width: 300px;
   text-align: center;
+  background-color: #f6eeee;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 </style>

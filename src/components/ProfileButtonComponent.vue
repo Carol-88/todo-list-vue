@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-btn">
     <button @click="goToProfile">Perfil</button>
   </div>
 </template>
@@ -15,10 +15,10 @@ const goToProfile = () => {
 </script>
 
 <style scoped>
-.container {
+.container-btn {
   position: absolute;
-  top: 10px; /* Ajusta según sea necesario */
+  top: 10px;
   right: 126px;
-  width: 104px; /* Ajusta según sea necesario */
+  width: 104px;
 }
 </style>

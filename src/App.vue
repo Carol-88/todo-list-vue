@@ -1,13 +1,16 @@
 <template>
+  <NavComponent />
   <router-view class="app-main" />
   <!-- your routes will load inside of these tags -->
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import { storeToRefs } from "pinia";
-import { useRouter } from "vue-router";
 import { useUserStore } from "./stores/user.js";
+import { useRouter } from "vue-router";
+import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
+import NavComponent from "./components/NavComponent.vue";
+
 import "@fortawesome/fontawesome-free/css/all.css";
 
 const router = useRouter();
@@ -57,5 +60,23 @@ button {
 
 button:hover {
   background-color: #731f1f;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.container {
+  background-color: #f1c9c9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin-top: 5rem;
 }
 </style>

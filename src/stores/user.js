@@ -2,14 +2,23 @@ import { defineStore } from "pinia";
 import { supabase } from "../supabase";
 
 export const useUserStore = defineStore({
-  id: "user", // Un identificador único para el store
+  id: "user",
   state: () => ({
-    user: null, // Inicializamos el estado del usuario como null
+    user: null,
   }),
   actions: {
     async fetchUser() {
       const { data, error } = await supabase.auth.getUser();
-      this.user = data.user;
+      if (error) {
+        console.error("Error al obtener el usuario:", error.message);
+        throw error;
+      }
+      if (data && data.user) {
+        this.user = data.user;
+      } else {
+        console.error("No se pudo obtener el usuario.");
+        this.user = null;
+      }
     },
     async signUp(email, password) {
       const { user, error } = await supabase.auth.signUp({
@@ -29,7 +38,6 @@ export const useUserStore = defineStore({
         if (data) this.user = data.user;
       } catch (error) {
         console.error("Error al iniciar sesión:", error.message);
-        // Aquí puedes lanzar el error o manejarlo de otra manera, por ejemplo, mostrando un mensaje al usuario
         throw error;
       }
     },
@@ -38,22 +46,48 @@ export const useUserStore = defineStore({
       if (error) throw error;
       this.user = null;
     },
-    async updateUser(full_name, avatar_url) {
+
+    async updateProfile(full_name, avatar_url, username) {
       const { data, error } = await supabase
-        .from("users")
-        .update({ full_name, avatar_url, updated_at: new Date() })
+        .from("profiles")
+        .update({ full_name, avatar_url, username })
+        .match({ id: this.user?.id });
+      if (error) throw error;
+      if (data && data.length > 0) {
+        this.user = data[0];
+      } else {
+        console.error("No se encontraron datos del perfil.");
+        this.user = null;
+      }
+    },
+    async fetchProfile() {
+      if (!this.user) {
+        console.error("this.user no está definido.");
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("*")
         .match({ id: this.user.id });
 
-      if (error) throw error;
-      if (data) this.user = data[0];
-    },
+      if (error) {
+        console.error("Error al obtener el perfil:", error.message);
+        throw error;
+      }
 
+      if (data && data.length > 0) {
+        this.user = data[0];
+      } else {
+        console.error("No se encontraron datos del perfil.");
+        this.user = null;
+      }
+    },
     async deleteUser() {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from("users")
         .delete()
-        .match({ id: this.user.id });
-
+        .match({ id: this.user?.id });
       if (error) throw error;
       this.user = null;
     },

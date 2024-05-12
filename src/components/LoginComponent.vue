@@ -45,46 +45,9 @@ const handleSubmit = async () => {
 </script>
 
 <style scoped>
-.container {
-  background-color: #f1c9c9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  margin-top: 5rem;
-}
-
 h2 {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
-}
-
-input {
-  width: 90%;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #ba5858;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #731f1f;
-}
-
-button:active {
-  background-color: #004085;
 }
 </style>

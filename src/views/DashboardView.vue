@@ -1,12 +1,6 @@
 <template>
   <section>
     <h1>Dashboard</h1>
-    <nav>
-      <ul>
-        <li><ProfileButtonComponent /></li>
-        <li><LogoutComponent /></li>
-      </ul>
-    </nav>
     <div v-if="userStore.user">
       <form class="task-inputs">
         <input
@@ -60,12 +54,10 @@
 </template>
 
 <script setup>
-import LogoutComponent from "@/components/LogoutComponent.vue";
 import { ref, onMounted } from "vue";
 import { useTaskStore } from "@/stores/task";
 import { useUserStore } from "@/stores/user";
 import EditTaskForm from "@/components/EditTaskForm.vue";
-import ProfileButtonComponent from "@/components/ProfileButtonComponent.vue";
 
 const taskStore = useTaskStore();
 const userStore = useUserStore();
