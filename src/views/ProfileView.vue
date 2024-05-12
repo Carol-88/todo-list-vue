@@ -3,7 +3,7 @@
     <h2>Indica tu nombre completo</h2>
     <input v-model="newFullName" placeholder="Nombre completo" />
     <h2>Sube tu avatar</h2>
-    <input type="file" @change="handleAvatarUpload" />
+    <input type="text" @change="handleAvatarUpload" />
     <button @click="updateUser">Actualizar</button>
 
     <!-- Tarjeta para mostrar los datos actualizados -->
