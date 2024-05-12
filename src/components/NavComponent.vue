@@ -3,6 +3,7 @@
     <ul>
       <li><ProfileButtonComponent /></li>
       <li><LogoutComponent /></li>
+      <li>Link al dashboard</li>
     </ul>
   </nav>
 </template>
