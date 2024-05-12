@@ -1,6 +1,7 @@
 <template>
+  <NavComponent />
   <div class="container">
-    <h2>Perfil</h2>
+    <h2>Editar perfil</h2>
     <form @submit.prevent="updateProfile">
       <input v-model="full_name" placeholder="Nombre completo" />
       <input v-model="avatar_url" placeholder="URL del avatar" />
@@ -8,16 +9,19 @@
       <button type="submit">Actualizar perfil</button>
     </form>
   </div>
-  <div class="user-card container" v-if="user">
+  <div class="user-card" v-if="user">
     <img :src="user.avatar_url" alt="Avatar" />
-    <h3>{{ user.username }}</h3>
-    <h4>{{ user.full_name }}</h4>
+    <div class="userinfo">
+      <p>username {{ user.username }}</p>
+      <em>name{{ user.full_name }}</em>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import { useUserStore } from "../stores/user";
+import NavComponent from "@/components/NavComponent.vue";
 
 const userStore = useUserStore();
 const user = ref(userStore.user);
@@ -62,5 +66,20 @@ img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  box-shadow: 0 0 10px rgb(118, 33, 33);
+}
+
+p {
+  font-weight: 600;
+}
+.userinfo {
+  padding: 0 2rem;
+  text-align: start;
+  color: darkred;
+}
+
+.container {
+  text-align: center;
+  color: darkred;
 }
 </style>

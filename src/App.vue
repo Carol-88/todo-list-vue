@@ -1,5 +1,4 @@
 <template>
-  <NavComponent />
   <router-view class="app-main" />
   <!-- your routes will load inside of these tags -->
 </template>
@@ -9,7 +8,6 @@ import { useUserStore } from "./stores/user.js";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
-import NavComponent from "./components/NavComponent.vue";
 
 import "@fortawesome/fontawesome-free/css/all.css";
 
@@ -39,7 +37,6 @@ html {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
-
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;
@@ -71,7 +68,13 @@ input {
   font-size: 16px;
 }
 
+ul {
+  list-style: none;
+}
+
 .container {
+  display: flex;
+  flex-direction: column;
   background-color: #f1c9c9;
   padding: 20px;
   border-radius: 8px;

@@ -1,12 +1,13 @@
 <template>
-  <div>
+  <div class="container">
     <h2>Editar Tarea</h2>
     <form @submit.prevent="submitForm">
       <input v-model="editedTitle" type="text" placeholder="Título" />
-      <textarea
+      <input
         v-model="editedDescription"
+        type="text"
         placeholder="Descripción"
-      ></textarea>
+      />
       <button type="submit">Guardar Cambios</button>
     </form>
   </div>
@@ -41,3 +42,10 @@ const submitForm = async () => {
   emit("close");
 };
 </script>
+
+<style scoped>
+h2 {
+  text-align: center;
+  color: darkred;
+}
+</style>

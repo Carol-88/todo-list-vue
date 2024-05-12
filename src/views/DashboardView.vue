@@ -1,5 +1,6 @@
 <template>
   <section>
+    <NavComponent />
     <h1>Dashboard</h1>
     <div v-if="userStore.user">
       <form class="task-inputs">
@@ -20,6 +21,13 @@
     </div>
     <div v-else>
       <p>Por favor, inicia sesión para agregar tareas.</p>
+    </div>
+    <div v-if="taskIdToEdit" class="modal-container">
+      <EditTaskForm
+        :taskId="taskIdToEdit"
+        @update-task="handleUpdateTask"
+        @close="handleCloseModal"
+      />
     </div>
 
     <div v-if="taskStore.tasks && taskStore.tasks.length > 0">
@@ -44,12 +52,6 @@
         </li>
       </ul>
     </div>
-    <EditTaskForm
-      v-if="taskIdToEdit"
-      :taskId="taskIdToEdit"
-      @update-task="handleUpdateTask"
-      @close="handleCloseModal"
-    />
   </section>
 </template>
 
@@ -58,6 +60,7 @@ import { ref, onMounted } from "vue";
 import { useTaskStore } from "@/stores/task";
 import { useUserStore } from "@/stores/user";
 import EditTaskForm from "@/components/EditTaskForm.vue";
+import NavComponent from "@/components/NavComponent.vue";
 
 const taskStore = useTaskStore();
 const userStore = useUserStore();
@@ -134,7 +137,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5rem;
+  padding-top: 2rem;
   height: 100vh;
 }
 
@@ -209,7 +212,7 @@ li {
 }
 
 .task-actions i:hover {
-  color: #660606;
+  color: #7ec40f;
 }
 
 .task-title-completed {
@@ -221,4 +224,6 @@ li {
   text-decoration: line-through;
   color: #660606;
 }
+
+/* CORREGIR MODAL */
 </style>
