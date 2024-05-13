@@ -25,10 +25,8 @@ const props = defineProps({
   taskDescription: String,
 });
 
-// Define los eventos que el componente puede emitir
 const emit = defineEmits(["update-task", "close"]);
 
-// Inicializa los datos del formulario con los valores actuales de la tarea
 const editedTitle = ref(props.taskTitle);
 const editedDescription = ref(props.taskDescription);
 
@@ -39,8 +37,6 @@ const submitForm = async () => {
     newDescription: editedDescription.value,
   });
 
-  // Llama a la función editTask del store con los nuevos datos
-  // Asegúrate de que el componente padre maneje correctamente esta emisión
   emit("close");
 };
 </script>
@@ -52,6 +48,7 @@ const submitForm = async () => {
 .modal {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0;
   position: fixed;
   top: 0;

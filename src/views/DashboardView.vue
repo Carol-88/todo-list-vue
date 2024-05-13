@@ -1,7 +1,7 @@
 <template>
   <section>
     <NavComponent />
-    <h1>Dashboard</h1>
+    <h1>Mis Tareas</h1>
     <div v-if="userStore.user">
       <form @submit.prevent="addTask" class="task-inputs">
         <input
@@ -140,11 +140,9 @@ section {
 h1 {
   font-size: xx-large;
   text-align: center;
-  font-family: Arial Black;
   font-weight: bold;
   font-size: 30px;
-  color: #fff;
-  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+  color: darkred;
 }
 
 nav {
@@ -163,14 +161,6 @@ li {
   width: 100%;
 }
 
-.task-inputs input {
-  flex-grow: 1;
-  margin-right: 8px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
 .task-list {
   display: flex;
   flex-wrap: wrap;
@@ -186,12 +176,13 @@ li {
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
-  background-color: #f6ecec;
+  background-color: #ffffff;
   max-width: 100%;
   margin: 8px;
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .task-card.task-content {
@@ -208,21 +199,21 @@ li {
 .task-actions i {
   cursor: pointer;
   margin-left: 8px;
-  color: #872020;
+  color: darkred;
 }
 
 .task-actions i:hover {
-  color: #7ec40f;
+  color: #1e775b;
 }
 
 .task-title-completed {
   text-decoration: line-through;
-  color: #660606;
+  color: darkred;
 }
 
 .task-description-completed {
   text-decoration: line-through;
-  color: #660606;
+  color: darkred;
 }
 
 .task-content {
@@ -231,5 +222,4 @@ li {
   flex-direction: column;
   justify-content: space-between;
 }
-/* CORREGIR MODAL */
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <section class="container">
     <h2>Iniciar sesión</h2>
     <form @submit.prevent="handleSubmit">
       <input
@@ -16,7 +16,7 @@
       />
       <button type="submit">Iniciar sesión</button>
     </form>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -49,9 +49,19 @@ const handleSubmit = async () => {
 </script>
 
 <style scoped>
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 h2 {
   text-align: center;
-  color: #333;
+  color: darkred;
   margin-bottom: 20px;
+}
+
+button {
+  width: 200px;
 }
 </style>

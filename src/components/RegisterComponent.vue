@@ -51,7 +51,7 @@ const handleSubmit = async () => {
 
 <style scoped>
 .container {
-  background-color: #f1c9c9;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -61,7 +61,7 @@ const handleSubmit = async () => {
 
 h2 {
   text-align: center;
-  color: #333;
+  color: darkred;
   margin-bottom: 20px;
 }
 

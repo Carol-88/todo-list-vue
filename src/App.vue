@@ -1,6 +1,5 @@
 <template>
   <router-view />
-  <!-- your routes will load inside of these tags -->
 </template>
 
 <script setup>
@@ -21,10 +20,8 @@ onMounted(async () => {
   try {
     await userStore.fetchUser();
     if (!user.value) {
-      // redirect them to logout if the user is not there
       router.push({ path: "/auth" });
     } else {
-      // continue to dashboard
       router.push({ path: "/" });
       await taskStore.fetchTasks();
       await userStore.fetchProfile();
@@ -46,32 +43,34 @@ html {
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;
-  background-color: #4d1818;
-  margin: auto; /* Asegura que el padding y el margin no hagan que el contenido se salga del viewport */
+  background-color: #edcad072;
+  margin: auto;
 }
 
 button {
   width: 100%;
   padding: 10px;
   background-color: #ba5858;
-  color: #ffffff;
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 button:hover {
-  background-color: #731f1f;
+  background-color: darkred;
 }
 
 input {
   width: 90%;
   padding: 10px;
   margin: 10px;
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 4px;
   font-size: 16px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 ul {
@@ -81,10 +80,10 @@ ul {
 .container {
   display: flex;
   flex-direction: column;
-  background-color: #f1c9c9;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 400px;
   margin-top: 5rem;
 }

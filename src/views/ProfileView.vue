@@ -1,21 +1,23 @@
 <template>
   <NavComponent />
-  <div class="container">
-    <h2>Editar perfil</h2>
-    <form @submit.prevent="updateProfile">
-      <input v-model="full_name" placeholder="Nombre completo" />
-      <input v-model="avatar_url" placeholder="URL del avatar" />
-      <input v-model="username" placeholder="Nombre de usuario" />
-      <button type="submit">Actualizar perfil</button>
-    </form>
-  </div>
-  <div class="user-card" v-if="profile">
-    <img :src="profile.avatar_url" alt="Avatar" />
-    <div class="userinfo">
-      <p>{{ profile.full_name }}</p>
-      <em>{{ profile.username }}</em>
+  <section>
+    <div class="container">
+      <h2>Editar perfil</h2>
+      <form @submit.prevent="updateProfile">
+        <input v-model="full_name" placeholder="Nombre completo" />
+        <input v-model="avatar_url" placeholder="URL del avatar" />
+        <input v-model="username" placeholder="Nombre de usuario" />
+        <button type="submit">Actualizar perfil</button>
+      </form>
     </div>
-  </div>
+    <div class="user-card" v-if="profile">
+      <img :src="profile.avatar_url" alt="Avatar" />
+      <div class="userinfo">
+        <p>{{ profile.full_name }}</p>
+        <em>{{ profile.username }}</em>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -46,34 +48,28 @@ const updateProfile = async () => {
   }
   await userStore.fetchProfile();
 };
-
-// onMounted(async () => {
-//   try {
-//     await userStore.fetchProfile();
-//     user.value = userStore.user;
-//   } catch (error) {
-//     console.error("Error al cargar el perfil del usuario:", error);
-//   }
-// });
 </script>
 
 <style scoped>
+section {
+  padding-top: 2rem;
+}
 .user-card {
   display: flex;
-  border: 1px solid #ccc;
   border-radius: 8px;
   padding: 16px;
   margin-top: 16px;
   width: 300px;
   text-align: center;
-  background-color: #f6eeee;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgb(118, 33, 33);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 p {
@@ -85,8 +81,10 @@ p {
   color: darkred;
 }
 
-.container {
+section {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  color: darkred;
+  align-items: center;
 }
 </style>
