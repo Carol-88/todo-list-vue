@@ -13,6 +13,7 @@ export const useTaskStore = defineStore({
           .from("tasks")
           .select("*")
           .order("id", { ascending: false });
+
         if (error) throw error;
         this.tasks = data;
       } catch (error) {

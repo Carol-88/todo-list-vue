@@ -184,13 +184,18 @@ li {
 }
 
 .task-card {
+  display: flex;
+  height: 200px;
+  width: 250px;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
   background-color: #f6ecec;
-  width: calc(33.33% - 16px);
   max-width: 100%;
   margin: 8px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
 .task-card.task-content {
@@ -224,5 +229,11 @@ li {
   color: #660606;
 }
 
+.task-content {
+  height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 /* CORREGIR MODAL */
 </style>

@@ -34,6 +34,8 @@ onMounted(async () => {
 
 <style>
 html {
+  width: 100vw;
+  overflow-x: hidden;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   display: flex;
