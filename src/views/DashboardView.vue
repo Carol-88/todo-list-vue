@@ -1,8 +1,8 @@
 <template>
   <section>
     <NavComponent />
-    <h1>Mis Tareas</h1>
-    <div v-if="userStore.user">
+    <h1><img src="/dash.png" alt="logo Dashboard" /></h1>
+    <div v-if="userStore.user" class="div-inputs">
       <form @submit.prevent="addTask" class="task-inputs">
         <input
           v-model="newTaskTitle"
@@ -56,7 +56,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { useTaskStore } from "@/stores/task";
 import { useUserStore } from "@/stores/user";
 import EditTaskForm from "@/components/EditTaskForm.vue";
@@ -133,24 +133,27 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2rem;
+  padding-top: 4rem;
   height: 100vh;
-}
-
-h1 {
-  font-size: xx-large;
-  text-align: center;
-  font-weight: bold;
-  font-size: 30px;
-  color: darkred;
 }
 
 nav {
   display: flex;
   flex-direction: row;
 }
+ul {
+  margin: 0;
+  padding: 0;
+}
 li {
   list-style: none;
+}
+
+img {
+  width: 400px;
+  position: sticky;
+  top: 40px;
+  left: 441px;
 }
 
 .task-inputs {
@@ -183,6 +186,12 @@ li {
   justify-content: space-between;
   align-items: stretch;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.task-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .task-card.task-content {
@@ -221,5 +230,16 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .div-inputs {
+    display: flex;
+    justify-content: center;
+  }
+  .task-inputs {
+    flex-wrap: wrap;
+    width: 70%;
+  }
 }
 </style>

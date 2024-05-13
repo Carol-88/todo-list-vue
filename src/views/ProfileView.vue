@@ -10,24 +10,15 @@
         <button type="submit">Actualizar perfil</button>
       </form>
     </div>
-    <div class="user-card" v-if="profile">
-      <img :src="profile.avatar_url" alt="Avatar" />
-      <div class="userinfo">
-        <p>{{ profile.full_name }}</p>
-        <em>{{ profile.username }}</em>
-      </div>
-    </div>
   </section>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { useUserStore } from "../stores/user";
-import { storeToRefs } from "pinia";
 import NavComponent from "@/components/NavComponent.vue";
 
 const userStore = useUserStore();
-const { profile } = storeToRefs(userStore);
 const full_name = ref("");
 const avatar_url = ref("");
 const username = ref("");
@@ -52,24 +43,7 @@ const updateProfile = async () => {
 
 <style scoped>
 section {
-  padding-top: 2rem;
-}
-.user-card {
-  display: flex;
-  border-radius: 8px;
-  padding: 16px;
-  margin-top: 16px;
-  width: 300px;
-  text-align: center;
-  background-color: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-top: 4rem;
 }
 
 p {
