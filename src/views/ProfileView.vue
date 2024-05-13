@@ -9,11 +9,11 @@
       <button type="submit">Actualizar perfil</button>
     </form>
   </div>
-  <div class="user-card" v-if="user">
-    <img :src="user.avatar_url" alt="Avatar" />
+  <div class="user-card" v-if="profile">
+    <img :src="profile.avatar_url" alt="Avatar" />
     <div class="userinfo">
-      <p>{{ user.full_name }}</p>
-      <em>{{ user.username }}</em>
+      <p>{{ profile.full_name }}</p>
+      <em>{{ profile.username }}</em>
     </div>
   </div>
 </template>
@@ -21,10 +21,11 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useUserStore } from "../stores/user";
+import { storeToRefs } from "pinia";
 import NavComponent from "@/components/NavComponent.vue";
 
 const userStore = useUserStore();
-const user = ref(userStore.user);
+const { profile } = storeToRefs(userStore);
 const full_name = ref("");
 const avatar_url = ref("");
 const username = ref("");
@@ -43,16 +44,17 @@ const updateProfile = async () => {
   } catch (error) {
     console.error("Error al actualizar el perfil:", error.message);
   }
+  await userStore.fetchProfile();
 };
 
-onMounted(async () => {
-  try {
-    await userStore.fetchProfile();
-    user.value = userStore.user;
-  } catch (error) {
-    console.error("Error al cargar el perfil del usuario:", error);
-  }
-});
+// onMounted(async () => {
+//   try {
+//     await userStore.fetchProfile();
+//     user.value = userStore.user;
+//   } catch (error) {
+//     console.error("Error al cargar el perfil del usuario:", error);
+//   }
+// });
 </script>
 
 <style scoped>

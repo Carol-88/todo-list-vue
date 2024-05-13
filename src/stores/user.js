@@ -5,6 +5,7 @@ export const useUserStore = defineStore({
   id: "user",
   state: () => ({
     user: null,
+    profile: null,
   }),
   actions: {
     async fetchUser() {
@@ -48,17 +49,28 @@ export const useUserStore = defineStore({
     },
 
     async updateProfile(full_name, avatar_url, username) {
+      let newUsername = this.profile.username;
+      let newAvatarUrl = this.profile.avatar_url;
+      let newFullName = this.profile.full_name;
+
+      if (full_name) newFullName = full_name;
+      if (avatar_url) newAvatarUrl = avatar_url;
+      if (username) newUsername = username;
+
       const { data, error } = await supabase
         .from("profiles")
-        .update({ full_name, avatar_url, username })
+        .update({
+          full_name: newFullName,
+          avatar_url: newAvatarUrl,
+          username: newUsername,
+        })
         .match({ id: this.user?.id });
       if (error) throw error;
-      if (data && data.length > 0) {
-        this.user = data[0];
-      } else {
-        console.error("No se encontraron datos del perfil.");
-        this.user = null;
-      }
+      this.profile = {
+        username: newUsername,
+        avatar_url: newAvatarUrl,
+        full_name: newFullName,
+      };
     },
     async fetchProfile() {
       if (!this.user) {
@@ -75,13 +87,11 @@ export const useUserStore = defineStore({
         console.error("Error al obtener el perfil:", error.message);
         throw error;
       }
-
-      if (data && data.length > 0) {
-        this.user = data[0];
-      } else {
-        console.error("No se encontraron datos del perfil.");
-        this.user = null;
-      }
+      this.profile = {
+        username: data[0].username,
+        avatar_url: data[0].avatar_url,
+        full_name: data[0].full_name,
+      };
     },
     async deleteUser() {
       const { error } = await supabase

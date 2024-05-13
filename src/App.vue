@@ -1,5 +1,5 @@
 <template>
-  <router-view class="app-main" />
+  <router-view />
   <!-- your routes will load inside of these tags -->
 </template>
 
@@ -24,6 +24,7 @@ onMounted(async () => {
     } else {
       // continue to dashboard
       router.push({ path: "/" });
+      await userStore.fetchProfile();
     }
   } catch (e) {
     console.error(e);

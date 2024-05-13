@@ -120,7 +120,7 @@ const handleCloseModal = () => {
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0"); // Los meses en JavaScript empiezan desde 0
+  const month = String(date.getMonth() + 1).padStart(2, "0");
   const year = date.getFullYear();
   const hours = String(date.getHours()).padStart(2, 2);
   const minutes = String(date.getMinutes()).padStart(2, "0");
@@ -193,11 +193,10 @@ li {
   margin: 8px;
 }
 
-/* Ajustes para mantener el título y el timestamp fijos */
 .task-card.task-content {
   margin-bottom: 16px;
-  max-height: 100px; /* Ajusta según sea necesario */
-  overflow: auto; /* Permite el scroll si el texto de la descripción excede el espacio disponible */
+  max-height: 100px;
+  overflow: auto;
 }
 
 .task-actions {
