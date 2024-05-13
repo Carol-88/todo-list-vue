@@ -23,8 +23,10 @@
 import { ref } from "vue";
 import { useUserStore } from "../stores/user.js";
 import { useRouter } from "vue-router";
+import { useTaskStore } from "../stores/task.js";
 
 const userStore = useUserStore();
+const taskStore = useTaskStore();
 const router = useRouter();
 const loginEmail = ref("");
 const loginPassword = ref("");
@@ -33,6 +35,8 @@ const handleSubmit = async () => {
   try {
     await userStore.signInWithEmail(loginEmail.value, loginPassword.value);
     if (userStore.user) {
+      await userStore.fetchProfile();
+      await taskStore.fetchTasks();
       router.push({ path: "/" });
     }
   } catch (error) {

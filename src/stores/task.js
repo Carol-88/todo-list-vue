@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { supabase } from "../supabase";
+import { useUserStore } from "./user";
 
 export const useTaskStore = defineStore({
   id: "tasks",
@@ -12,6 +13,7 @@ export const useTaskStore = defineStore({
         const { data, error } = await supabase
           .from("tasks")
           .select("*")
+          .eq("user_id", useUserStore().user.id)
           .order("id", { ascending: false });
 
         if (error) throw error;
@@ -30,7 +32,6 @@ export const useTaskStore = defineStore({
         });
 
         if (error) throw error;
-        console.log(data);
         if (data) this.tasks = [...this.tasks, ...data];
 
         this.fetchTasks();

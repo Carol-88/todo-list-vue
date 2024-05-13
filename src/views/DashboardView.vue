@@ -3,7 +3,7 @@
     <NavComponent />
     <h1>Dashboard</h1>
     <div v-if="userStore.user">
-      <form class="task-inputs">
+      <form @submit.prevent="addTask" class="task-inputs">
         <input
           v-model="newTaskTitle"
           type="text"
@@ -16,7 +16,7 @@
           placeholder="Describe tu tarea"
           required
         />
-        <button @click="addTask">Agregar tarea</button>
+        <button type="submit">Agregar tarea</button>
       </form>
     </div>
     <div v-else>
@@ -126,10 +126,6 @@ const formatDate = (dateString) => {
   const minutes = String(date.getMinutes()).padStart(2, "0");
   return `${day}/${month}/${year} : ${hours}:${minutes}`;
 };
-
-onMounted(async () => {
-  await taskStore.fetchTasks();
-});
 </script>
 
 <style scoped>

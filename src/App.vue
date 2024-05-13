@@ -5,6 +5,7 @@
 
 <script setup>
 import { useUserStore } from "./stores/user.js";
+import { useTaskStore } from "./stores/task.js";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
@@ -13,6 +14,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 
 const router = useRouter();
 const userStore = useUserStore();
+const taskStore = useTaskStore();
 const { user } = storeToRefs(userStore);
 
 onMounted(async () => {
@@ -24,6 +26,7 @@ onMounted(async () => {
     } else {
       // continue to dashboard
       router.push({ path: "/" });
+      await taskStore.fetchTasks();
       await userStore.fetchProfile();
     }
   } catch (e) {
