@@ -1,35 +1,22 @@
-# final-project
+# Proyecto VueJS3 con Pinia y Supabase
 
-This template should help get you started developing with Vue 3 in Vite.
+![Logo del Proyecto](https://dashboard-todolist.netlify.app/dash.png)
 
-## Recommended IDE Setup
+Este proyecto es una aplicación web completa desarrollada con VueJS 3, utilizando la Composition API, Pinia para el manejo del estado, y Supabase para la autenticación y gestión de datos. La aplicación permite a los usuarios registrarse, cerrar sesión, iniciar sesión, modificar su perfil, y gestionar tareas desde un panel de control. Además, incluye una barra de navegación y una tarjeta de usuario que muestra los datos del usuario.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Características
 
-## Customize configuration
+- **Autenticación**: Implementación de registro, cierre de sesión e inicio de sesión utilizando Supabase.
+- **Gestión de Perfil**: Vista de perfil donde el usuario puede modificar sus datos.
+- **Panel de Control de Tareas**: Vista de dashboard donde el usuario puede añadir, editar, marcar como completadas y borrar tareas.
+- **Barra de Navegación**: Integración con Vue Router para una navegación fluida entre las vistas.
+- **Tarjeta de Usuario**: Muestra los datos del usuario de manera dinámica.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+![Dashboard de Tareas](<url_de_la_imagen_del_dashboard>)
 
-## Project Setup
+## Tecnologías Utilizadas
 
-```sh
-npm install
-```
+- **Frontend**: VueJS 3, Composition API, Pinia.
+- **Backend**: Supabase.
+- **Estilos**: Utiliza CSS para el diseño y estilos de la aplicación.
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
