@@ -1,5 +1,5 @@
 <template>
-  <article class="modal">
+  <article class="modal" @click="handleClick">
     <div class="container">
       <h2>Editar Tarea</h2>
       <form @submit.prevent="submitForm">
@@ -36,6 +36,10 @@ const submitForm = async () => {
     newDescription: editedDescription.value,
   });
 
+  emit("close");
+};
+
+const handleClick = () => {
   emit("close");
 };
 </script>
