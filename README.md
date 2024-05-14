@@ -2,6 +2,8 @@
 
 Este proyecto es una aplicación web completa desarrollada con VueJS 3, utilizando la Composition API, Pinia para el manejo del estado, y Supabase para la autenticación y gestión de datos. La aplicación permite a los usuarios registrarse, cerrar sesión, iniciar sesión, modificar su perfil, y gestionar tareas desde un panel de control. Además, incluye una barra de navegación y una tarjeta de usuario que muestra los datos del usuario.
 
+<a href="https://dashboard-todolist.netlify.app/" target="_blank">Ver deploy</a>
+
 ## Características
 
 - **Autenticación**: Implementación de registro, cierre de sesión e inicio de sesión utilizando Supabase.
