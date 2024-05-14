@@ -42,10 +42,6 @@ const updateProfile = async () => {
 </script>
 
 <style scoped>
-section {
-  padding-top: 4rem;
-}
-
 p {
   font-weight: 600;
 }

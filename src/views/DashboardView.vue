@@ -133,14 +133,9 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4rem;
   height: 100vh;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-}
 ul {
   margin: 0;
   padding: 0;
