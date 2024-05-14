@@ -9,20 +9,11 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { useUserStore } from "../stores/user";
+import { storeToRefs } from "pinia";
 
 const userStore = useUserStore();
-const profile = ref(userStore.profile);
-
-const updateProfile = async () => {
-  try {
-    // Llama a la función updateProfile del store para actualizar el perfil
-    await userStore.updateProfile();
-  } catch (error) {
-    console.error("Error al actualizar el perfil:", error.message);
-  }
-};
+const { profile } = storeToRefs(userStore);
 </script>
 
 <style scoped>
