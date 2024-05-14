@@ -148,8 +148,6 @@ li {
 img {
   width: 400px;
   position: sticky;
-  top: 40px;
-  left: 441px;
 }
 
 .task-inputs {

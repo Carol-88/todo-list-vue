@@ -33,7 +33,6 @@ ul {
   width: 100%;
   list-style: none;
   padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

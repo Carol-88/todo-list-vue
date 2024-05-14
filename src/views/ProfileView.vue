@@ -58,7 +58,10 @@ section {
   align-items: center;
   width: 100vw;
 }
-.container {
-  width: 90%;
+
+@media (max-width: 768px) {
+  .container {
+    width: 70%;
+  }
 }
 </style>
