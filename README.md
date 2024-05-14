@@ -1,8 +1,8 @@
 ### VueJS3 Project with Pinia and Supabase
 This project is a complete web application developed with VueJS 3, utilizing the Composition API, Pinia for state management, and Supabase for authentication and data management. The application allows users to register, log out, log in, modify their profile, and manage tasks from a control panel. Additionally, it includes a navigation bar and a user card displaying user data.
 
+ [Visit my web app](https://dashboard-todolist.netlify.app/)
 <div style="display: inline-block;">
-  <h3>Visit my web app</h3>
   <img src="https://github.com/Carol-88/todo-list-vue/assets/114145394/66ad0485-7261-4089-82e7-e463620e1623" width="200" height="200">
 </div>
 <div style="display: inline-block;">
