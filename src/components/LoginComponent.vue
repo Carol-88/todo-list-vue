@@ -42,7 +42,7 @@ const handleSubmit = async () => {
   } catch (error) {
     console.error("Error al iniciar sesión:", error.message);
     alert(
-      "Error al iniciar sesión. Por favor, verifica el correo electrónico y la contraseña."
+      "Error al iniciar sesión. Por favor, verifica el correo electrónico y la contraseña. "
     );
   }
 };
