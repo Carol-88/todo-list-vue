@@ -13,7 +13,7 @@ Este proyecto es una aplicación web completa desarrollada con VueJS 3, utilizan
 - **Tarjeta de Usuario**: Muestra los datos del usuario de manera dinámica.
 
 <div align="center">
-  <img src="https://github.com/Carol-88/todo-list-vue/blob/main/public/dashboard.png" width="400" height="400" alt="Dashboard">
+  <img src="https://github.com/Carol-88/todo-list-vue/blob/main/public/dashboard.png" width="600" height="400" alt="Dashboard">
 </div>
 
 
