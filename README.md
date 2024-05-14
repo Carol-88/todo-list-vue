@@ -12,7 +12,7 @@ Este proyecto es una aplicación web completa desarrollada con VueJS 3, utilizan
 - **Barra de Navegación**: Integración con Vue Router para una navegación fluida entre las vistas.
 - **Tarjeta de Usuario**: Muestra los datos del usuario de manera dinámica.
 
-![Dashboard de Tareas](https://github.com/Carol-88/todo-list-vue/blob/main/public/dashboard.png?raw=true)
+![Dashboard de Tareas]<img src="https://github.com/Carol-88/todo-list-vue/blob/main/public/dashboard.png?raw=true" width="400" height="400 alt="dasboard" />
 
 ## Tecnologías Utilizadas
 
