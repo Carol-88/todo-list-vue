@@ -2,31 +2,50 @@
   <div class="container">
     <h2>Registro</h2>
     <form @submit.prevent="handleSubmit">
-      <input
-        v-model="email"
-        type="email"
-        placeholder="Correo electrónico"
-        required
-      />
-      <input
-        v-model="password"
-        type="password"
-        placeholder="Contraseña"
-        required
-      />
-      <input
-        v-model="confirmPassword"
-        type="password"
-        placeholder="Confirmar contraseña"
-        required
-      />
-      <button type="submit">Registrarse</button>
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input
+          v-model="email"
+          type="email"
+          id="email"
+          placeholder="Correo electrónico"
+          :class="{ 'is-invalid': emailError }"
+        />
+        <span v-if="emailError" class="error-message">{{ emailError }}</span>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input
+          v-model="password"
+          type="password"
+          id="password"
+          placeholder="Contraseña"
+          :class="{ 'is-invalid': passwordError }"
+        />
+        <span v-if="passwordError" class="error-message">{{
+          passwordError
+        }}</span>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar contraseña</label>
+        <input
+          v-model="confirmPassword"
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirmar contraseña"
+          :class="{ 'is-invalid': confirmPasswordError }"
+        />
+        <span v-if="confirmPasswordError" class="error-message">{{
+          confirmPasswordError
+        }}</span>
+      </div>
+      <button type="submit" :disabled="isValid">Registrarse</button>
     </form>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useUserStore } from "../stores/user.js";
 
 const userStore = useUserStore();
@@ -34,17 +53,42 @@ const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 
+const emailError = computed(() => {
+  if (!email.value) return "El correo electrónico es requerido.";
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email.value))
+    return "El correo electrónico no es válido.";
+  return null;
+});
+
+const passwordError = computed(() => {
+  if (!password.value) return "La contraseña es requerida.";
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+  if (!passwordRegex.test(password.value))
+    return "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y tener al menos 8 caracteres.";
+  return null;
+});
+
+const confirmPasswordError = computed(() => {
+  if (!confirmPassword.value)
+    return "La confirmación de contraseña es requerida.";
+  if (password.value !== confirmPassword.value)
+    return "Las contraseñas no coinciden.";
+  return null;
+});
+
+const isValid = computed(() => {
+  return (
+    !emailError.value && !passwordError.value && !confirmPasswordError.value
+  );
+});
+
 const handleSubmit = async () => {
-  if (password.value !== confirmPassword.value) {
-    alert("Las contraseñas no coinciden.");
-    return;
-  }
+  if (!isValid.value) return;
   try {
     await userStore.signUp(email.value, password.value);
-    // Redirigir o mostrar un mensaje de éxito
   } catch (error) {
-    console.error("Error al registrarse:", error.message);
-    alert("Error al registrarse. Por favor, verifica los datos ingresados.");
+    alert.error("Error al registrarse:", error.message);
   }
 };
 </script>
@@ -72,5 +116,15 @@ input {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
+}
+
+.is-invalid {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
 }
 </style>

@@ -18,9 +18,8 @@
 <script setup>
 import { ref } from "vue";
 
-// Define las props que el componente espera recibir
 const props = defineProps({
-  taskId: Number, // Asegúrate de que taskId sea de tipo String
+  taskId: Number,
   taskTitle: String,
   taskDescription: String,
 });
