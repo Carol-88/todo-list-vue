@@ -47,13 +47,6 @@ html {
   margin: auto;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 95%;
-  justify-content: flex-end;
-}
 button {
   width: 100%;
   padding: 10px;

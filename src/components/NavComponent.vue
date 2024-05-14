@@ -1,10 +1,11 @@
 <template>
   <nav>
     <ul>
-      <li><UserCardComponent /></li>
-      <li><ProfileButtonComponent /></li>
-      <li><LogoutComponent /></li>
-      <li><DashboardButtonComponent /></li>
+      <li class="usercard"><UserCardComponent /></li>
+      <li class="menu">
+        <ProfileButtonComponent /> <LogoutComponent />
+        <DashboardButtonComponent />
+      </li>
     </ul>
   </nav>
 </template>
@@ -17,22 +18,45 @@ import UserCardComponent from "@/components/UserCardComponent.vue";
 </script>
 
 <style scoped>
+.menu {
+  display: flex;
+  gap: 1rem;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 95%;
+  justify-content: flex-end;
+}
 ul {
+  width: 100%;
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  justify-content: space-between;
 }
 
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
   }
-
   ul {
+    display: flex;
+    justify-content: space-evenly;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .usercard {
+    align-self: center;
+    padding-bottom: 2rem;
+  }
+  .menu {
+    flex-direction: column;
+    width: 90%;
   }
 }
 </style>

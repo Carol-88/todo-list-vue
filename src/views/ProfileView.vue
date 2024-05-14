@@ -56,5 +56,9 @@ section {
   flex-direction: column;
   text-align: center;
   align-items: center;
+  width: 100vw;
+}
+.container {
+  width: 90%;
 }
 </style>
