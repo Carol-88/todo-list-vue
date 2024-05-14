@@ -8,8 +8,8 @@ Este proyecto es una aplicación web completa desarrollada con VueJS 3, utilizan
 
 - **Autenticación**: Implementación de registro, cierre de sesión e inicio de sesión utilizando Supabase.
 - **Gestión de Perfil**: Vista de perfil donde el usuario puede modificar sus datos.
-  <div align="center">
-  <img src="[https://github.com/Carol-88/todo-list-vue/blob/main/public/dashboard.png](https://github.com/Carol-88/todo-list-vue/blob/main/public/profile.png" width="400" height="600" alt="Dashboard">
+  <div align="center" padding-top="20">
+  <img src="https://github.com/Carol-88/todo-list-vue/blob/main/public/profile.png" width="400" height="600" alt="Profile">
 </div>
 - **Panel de Control de Tareas**: Vista de dashboard donde el usuario puede añadir, editar, marcar como completadas y borrar tareas.
 <div align="center">
