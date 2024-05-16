@@ -9,7 +9,6 @@
           type="email"
           id="email"
           placeholder="Correo electrónico"
-          :class="{ 'is-invalid': emailError }"
         />
         <span v-if="emailError" class="error-message">{{ emailError }}</span>
       </div>
@@ -20,7 +19,6 @@
           type="password"
           id="password"
           placeholder="Contraseña"
-          :class="{ 'is-invalid': passwordError }"
         />
         <span v-if="passwordError" class="error-message">{{
           passwordError
@@ -33,13 +31,12 @@
           type="password"
           id="confirmPassword"
           placeholder="Confirmar contraseña"
-          :class="{ 'is-invalid': confirmPasswordError }"
         />
         <span v-if="confirmPasswordError" class="error-message">{{
           confirmPasswordError
         }}</span>
       </div>
-      <button type="submit" :disabled="isValid">Registrarse</button>
+      <button type="submit">Registrarse</button>
     </form>
   </div>
 </template>
@@ -77,14 +74,8 @@ const confirmPasswordError = computed(() => {
   return null;
 });
 
-const isValid = computed(() => {
-  return (
-    !emailError.value && !passwordError.value && !confirmPasswordError.value
-  );
-});
-
 const handleSubmit = async () => {
-  if (!isValid.value) return;
+  console.log("Probando");
   try {
     await userStore.signUp(email.value, password.value);
   } catch (error) {

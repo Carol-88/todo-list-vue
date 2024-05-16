@@ -1,6 +1,6 @@
 <template>
   <article class="modal" @click="handleClick">
-    <div class="container">
+    <div class="container" @click.stop>
       <h2>Editar Tarea</h2>
       <form @submit.prevent="submitForm">
         <input v-model="editedTitle" type="text" placeholder="Título" />
