@@ -1,47 +1,54 @@
-# Proyecto VueJS3 con Pinia y Supabase
+### VueJS3 Project with Pinia and Supabase
+This project is a complete web application developed with VueJS 3, utilizing the Composition API, Pinia for state management, and Supabase for authentication and data management. The application allows users to register, log out, log in, modify their profile, and manage tasks from a control panel. Additionally, it includes a navigation bar and a user card displaying user data.
 
-Este proyecto es una aplicación web completa desarrollada con VueJS 3, utilizando la Composition API, Pinia para el manejo del estado, y Supabase para la autenticación y gestión de datos. La aplicación permite a los usuarios registrarse, cerrar sesión, iniciar sesión, modificar su perfil, y gestionar tareas desde un panel de control. Además, incluye una barra de navegación y una tarjeta de usuario que muestra los datos del usuario.
+[Visit my web app](https://dashboard-todolist.netlify.app/)
 
-<a href="https://dashboard-todolist.netlify.app/" target="_blank">Ver deploy</a>
+<div style="display: inline-block;">
+  <img src="https://github.com/Carol-88/todo-list-vue/assets/114145394/66ad0485-7261-4089-82e7-e463620e1623" width="200" height="200">
+</div>
+<div style="display: inline-block;">
+  <h3>Visit my presentation</h3>
+  <img src="https://github.com/Carol-88/todo-list-vue/assets/114145394/f5c1919f-8819-405c-8434-fe5a9cb32911" width="200" height="200">
+</div>
 
-## Características
 
-- **Autenticación**: Implementación de registro, cierre de sesión e inicio de sesión utilizando Supabase.
+## Features
+
+- **Authentication:** Implementation of registration, logout, and login using Supabase.
 
   <div align="center" style="padding-top: 20px;">
     <img src="https://github.com/Carol-88/todo-list-vue/blob/main/public/login.png" width="350" height="350" alt="Login"> 
     <img src="https://github.com/Carol-88/todo-list-vue/blob/main/public/register.png" width="350" height="350" alt="Register">
   </div>
 
-- **Gestión de Perfil**: Vista de perfil donde el usuario puede modificar sus datos.
+- **Profile Management:** Profile view where the user can modify their data.
 
   <div align="center" style="padding-top: 20px;">
     <img src="https://github.com/Carol-88/todo-list-vue/blob/main/public/profile.png" width="400" height="600" alt="Profile">
   </div>
 
-- **Panel de Control de Tareas**: Vista de dashboard donde el usuario puede añadir, editar, marcar como completadas y borrar tareas.
+- **Task Control Panel:** Dashboard view where the user can add, edit, mark as completed, and delete tasks.
 
   <div align="center">
     <img src="https://github.com/Carol-88/todo-list-vue/blob/main/public/dashboard.png" width="600" height="400" alt="Dashboard">
   </div>
 
-- **Barra de Navegación**: Integración con Vue Router para una navegación fluida entre las vistas.
+- **Navigation Bar:** Integration with Vue Router for smooth navigation between views.
 
-- **Tarjeta de Usuario**: Muestra los datos del usuario de manera dinámica.
+- **User Card:** Dynamically displays user data.
 
   <div align="center">
     <img src="https://github.com/Carol-88/todo-list-vue/blob/main/public/usercard.png" width="200" height="90" alt="Usercard">
   </div>
 
-## Tecnologías Utilizadas
+## Technologies Used
+**Frontend:** VueJS 3, Composition API, Pinia.
+**Backend:** Supabase.
+**Styles:** Uses CSS for application design and styles.
 
-- **Frontend**: VueJS 3, Composition API, Pinia.
-- **Backend**: Supabase.
-- **Estilos**: Utiliza CSS para el diseño y estilos de la aplicación.
-
-**Configurar Supabase**:
-   - Crea una cuenta en [Supabase](https://supabase.io/) si aún no tienes una.
-   - Crea un nuevo proyecto en Supabase y obtén las credenciales de la API.
-   - Configura las credenciales de Supabase en el archivo `.env` de tu proyecto.
+**Setting up Supabase:**
+- Create an account on Supabase if you don't have one already.
+- Create a new project in Supabase and obtain the API credentials.
+- Configure the Supabase credentials in your project's .env file.
 
 
